@@ -10,11 +10,15 @@ const todoSlice = createSlice({
         },
         AddingTodo: (state, action)=>{
             state.myTodos= [...state.myTodos, action.payload]
+        },
+        UpdatingTodo: (state, action)=>{
+            state.myTodos= state.myTodos.map((el)=>el.id == action.payload.id? {...el, task: action.payload.newTask}: el)
         }
+    }
 
 
     }
-});
+);
 
 export default todoSlice.reducer;
-export const {deleteTodo, AddingTodo}= todoSlice.actions;
+export const {deleteTodo, AddingTodo, UpdatingTodo}= todoSlice.actions;
